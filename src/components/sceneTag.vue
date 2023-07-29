@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, ref, onMounted } from "vue";
+import { ref, onMounted } from "vue";
 import { CSS2DObject } from "three/addons/renderers/CSS2DRenderer.js";
 
 const props = defineProps(['item', 'model'])

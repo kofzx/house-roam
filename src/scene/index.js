@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 import { model } from "@/scene/model.js";
 
-import stoneGround from "@/assets/stoneGround.jpg";
+import stoneGround from "@/assets/stGround.jpg";
 
 const scene = new THREE.Scene();
 scene.add(model);
