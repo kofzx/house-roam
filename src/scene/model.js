@@ -40,7 +40,6 @@ let percentDiv = null
 loader.load('/city_scene_tarifa/scene.gltf', function (gltf) {
     console.log(gltf)
     model.add(gltf.scene);
-    document.getElementById("progress").style.display = 'none';
 
     // 路灯
     for (let i = 1; i <= 5; i++) {
@@ -60,13 +59,8 @@ loader.load('/city_scene_tarifa/scene.gltf', function (gltf) {
 
     emitter.emit('modelLoaded', model)
 }, function (xhr) {
-    if (!percentDiv) {
-        percentDiv = document.getElementById("per")
-    }
-    const percent = xhr.loaded / xhr.total;
-    percentDiv.style.width = percent * 400 + "px";
-    percentDiv.style.textIndent = percent * 400 + 5 + "px";
-    percentDiv.innerHTML = Math.floor(percent * 100) + '%';
+    const percent = Math.floor(xhr.loaded / xhr.total * 100);
+    emitter.emit('modelLoading', percent)
 })
 
 export {

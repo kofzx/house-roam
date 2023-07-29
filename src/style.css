@@ -3,6 +3,19 @@ html, body {
     padding: 0;
 }
 
+.el-progress-bar__outer {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    width: 400px;
+}
+
+.el-progress-bar__outer .el-progress-bar__inner {
+    background-color: rgba(0,255,255,1.0);
+}
+
+.el-progress .el-progress__text span {
+    color:#ffffff;
+}
+
 .el-switch .el-switch__core {
     margin-left: 10px;
     background-color: rgba(0, 0, 0, 0.0) !important;
