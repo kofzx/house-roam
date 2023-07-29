@@ -3,8 +3,6 @@ import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import {getRandomColor} from "@/utils/index.js";
 import emitter from "@/utils/emitter.js";
 
-const cityModel = new URL('@/assets/city_scene_tarifa/scene.gltf', import.meta.url)
-
 const loader = new GLTFLoader();
 
 const model = new THREE.Group()
@@ -39,7 +37,7 @@ function findAndSetHouseWindow(name) {
 
 let percentDiv = null
 
-loader.load(cityModel.href, function (gltf) {
+loader.load('/city_scene_tarifa/scene.gltf', function (gltf) {
     console.log(gltf)
     model.add(gltf.scene);
     document.getElementById("progress").style.display = 'none';
