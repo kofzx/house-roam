@@ -16,6 +16,8 @@ const modelRef = ref(null)
 const backRef = ref(null)
 const isModelLoaded = ref(false)
 const percent = ref(0)
+const lengthComputable = ref(false)
+
 const noopFormat = () => ''
 
 onMounted(() => {
@@ -29,8 +31,12 @@ emitter.on('modelLoaded', async (model) => {
   isModelLoaded.value = true
 })
 
-emitter.on('modelLoading', (val) => {
-  percent.value = val
+emitter.on('modelLoading', (xhr) => {
+  if (xhr.lengthComputable) {
+    const percentVal = Math.floor(xhr.loaded / xhr.total * 100);
+    percent.value = percentVal
+  }
+  lengthComputable.value = xhr.lengthComputable
 })
 
 emitter.on('showLabel', (val) => {
@@ -40,7 +46,14 @@ emitter.on('showLabel', (val) => {
 
 <template>
   <div ref="backRef" class="back" v-if="!isModelLoaded">
-    <el-progress class="percent" :text-inside="false" :stroke-width="6" :percentage="percent" :format="noopFormat" />
+    <el-progress
+        class="percent"
+        :indeterminate="!lengthComputable"
+        :text-inside="false"
+        :stroke-width="6"
+        :percentage="percent"
+        :format="noopFormat"
+    />
   </div>
   <Control v-if="isModelLoaded" ref="controlRef" />
   <div v-if="isModelLoaded">

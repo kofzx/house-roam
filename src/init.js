@@ -52,6 +52,29 @@ export function initRenderer() {
     }
     render();
 
+    function compatLandscape() {
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        const app = document.getElementById('app');
+
+        // 适配手机横屏展示
+        if (width > height) {
+            app.style.width = width + "px";
+            app.style.height = height + "px";
+            app.style.top = "0";
+            app.style.left = "0";
+            app.style.transform = 'none';
+            app.style.transformOrigin = '50% 50%';
+        } else {
+            app.style.width = height + "px";
+            app.style.height = width + "px";
+            app.style.top = ((height - width) / 2) + "px";
+            app.style.left = 0 - ((height - width) / 2) + "px";
+            app.style.transform = 'rotate(90deg)';
+            app.style.transformOrigin = '50% 50%';
+        }
+    }
+
     window.onresize=function(){
         const width = window.innerWidth;
         const height = window.innerHeight;
@@ -61,7 +84,17 @@ export function initRenderer() {
         bloomComposer.setSize( width, height );
         finalComposer.setSize( width, height );
 
-        camera.aspect = window.innerWidth/window.innerHeight;
+        compatLandscape();
+
+        // 相机适配手机横屏展示
+        if (width > height) {
+            camera.aspect = width / height;
+        } else {
+            camera.aspect = height / width;
+        }
         camera.updateProjectionMatrix();
     };
+
+    window.addEventListener('orientationchange', compatLandscape);
+
 }

@@ -60,8 +60,7 @@ loader.load('/city_scene_tarifa/scene.gltf', function (gltf) {
     emitter.emit('modelLoaded', model)
 }, function (xhr) {
     console.log(xhr)
-    const percent = Math.floor(xhr.loaded / xhr.total * 100);
-    emitter.emit('modelLoading', percent)
+    emitter.emit('modelLoading', xhr)
 })
 
 export {
