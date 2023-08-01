@@ -1,7 +1,8 @@
 import * as THREE from 'three'
 import { model } from "@/scene/model.js";
+import { assetsLoad } from "@/scene/assetsLoader.js";
 
-import stoneGround from "@/assets/stGround.jpg";
+const assets = assetsLoad();
 
 const scene = new THREE.Scene();
 scene.add(model);
@@ -20,7 +21,7 @@ scene.fog = fog;
 
 const geometry = new THREE.PlaneGeometry(8000, 8000); //矩形平面
 
-const texture = new THREE.TextureLoader().load(stoneGround);
+const texture = assets.texture.stoneGroundTexture;
 texture.colorSpace = THREE.SRGBColorSpace;
 
 texture.wrapS = THREE.RepeatWrapping;
@@ -44,4 +45,5 @@ export {
     directionalLight,
     ambient,
     fog,
+    assets,
 }

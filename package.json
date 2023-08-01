@@ -9,10 +9,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tweenjs/tween.js": "^21.0.0",
     "dat.gui": "^0.7.9",
     "element-plus": "^2.3.8",
     "mitt": "^3.0.1",
     "three": "^0.155.0",
+    "vant": "^4.6.3",
     "vue": "^3.3.4"
   },
   "devDependencies": {

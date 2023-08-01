@@ -4,7 +4,6 @@ import { initRenderer } from './init.js'
 import Control from './components/control.vue'
 import SceneTag from "@/components/sceneTag.vue";
 import emitter from "@/utils/emitter.js";
-import { CSS2LabelRenderer } from "@/scene/CSS2DRenderer.js";
 
 const sceneTags = [
   { name: '员工宿舍A', queryName: 'Object_15' },
@@ -37,10 +36,6 @@ emitter.on('modelLoading', (xhr) => {
     percent.value = percentVal
   }
   lengthComputable.value = xhr.lengthComputable
-})
-
-emitter.on('showLabel', (val) => {
-  CSS2LabelRenderer.domElement.style.display = val ? 'block' : 'none'
 })
 </script>
 

@@ -34,11 +34,7 @@ function findAndSetHouseWindow(name) {
     windowMesh.layers.enable(1);
 }
 
-
-let percentDiv = null
-
 loader.load('/city_scene_tarifa/scene.gltf', function (gltf) {
-    console.log(gltf)
     model.add(gltf.scene);
 
     // 路灯
@@ -59,7 +55,6 @@ loader.load('/city_scene_tarifa/scene.gltf', function (gltf) {
 
     emitter.emit('modelLoaded', model)
 }, function (xhr) {
-    console.log(xhr)
     emitter.emit('modelLoading', xhr)
 })
 
