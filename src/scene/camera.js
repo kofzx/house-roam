@@ -15,10 +15,10 @@ controls.minDistance = 2000;
 controls.maxDistance = 5000;
 // 最大旋转角度
 controls.maxPolarAngle = Math.PI / 2.2;
-controls.addEventListener('change', () => {
-    console.log(camera.position)
-    console.log('target: ', controls.target)
-})
+// controls.addEventListener('change', () => {
+//     console.log(camera.position)
+//     console.log('target: ', controls.target)
+// })
 
 
 export {

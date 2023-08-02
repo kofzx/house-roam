@@ -71,12 +71,12 @@ export function initRenderer() {
         const width = window.innerWidth;
         const height = window.innerHeight;
 
-        renderer.setSize(innerWidth, innerHeight);
-        CSS2LabelRenderer.setSize(innerWidth, innerHeight);
+        renderer.setSize(width, height);
+        CSS2LabelRenderer.setSize(width, height);
         bloomComposer.setSize( width, height );
         finalComposer.setSize( width, height );
 
-        compatLandscape();
+        // compatLandscape();
 
         // 相机适配手机横屏展示
         if (width > height) {
@@ -87,6 +87,6 @@ export function initRenderer() {
         camera.updateProjectionMatrix();
     };
 
-    window.addEventListener('orientationchange', compatLandscape);
+    // window.addEventListener('orientationchange', compatLandscape);
 
 }
